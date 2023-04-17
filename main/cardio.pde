@@ -1,7 +1,25 @@
 float[] HRdata = new float[50];  // Array to store heart rate data
 int graphWidth = 200;  // Width of the graph in pixels
 int graphHeight = 100;  // Height of the graph in pixels
+int circleSize = 20;
+color circleColor = color(255, 0, 0); // initial color is red
+int circleX = 100;
+int circleY = 100;
 
+void draw_FSR() {
+  //background(255);
+  
+  // Check if FSR is greater than 100
+  if (FSR > 100) {
+    circleColor = color(0, 255, 0); // Change color to green
+  } else {
+    circleColor = color(255, 0, 0); // initial color is red
+  }
+  
+  // Draw the circle
+  fill(circleColor);
+  ellipse(circleX, circleY, circleSize, circleSize);
+}
 
 void cardio_draw() {
   PImage img;
@@ -18,6 +36,7 @@ void cardio_draw() {
   textSize(12);  // Set the font size for the axis labels
 
   updateHRdata(HR);  // Update the heart rate data with the new value
+  draw_FSR();
   drawGraph();  // Draw the heart rate graph
 }
 
