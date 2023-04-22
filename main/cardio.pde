@@ -1,4 +1,6 @@
 float[] HRdata = new float[50];  // Array to store heart rate data
+String[] choices = {"Left", "Right", "Upper Cut", "Jab"};
+String currentChoice = choices[int(random(choices.length))];;
 int graphWidth = 200;  // Width of the graph in pixels
 int graphHeight = 100;  // Height of the graph in pixels
 int circleSize = 200;
@@ -20,7 +22,29 @@ void draw_FSR() {
   fill(circleColor);
   ellipse(circleX, circleY, circleSize, circleSize);
 }
-
+void updateChoice() {
+  if(currentChoice.equals("Right")) {
+    if (gyro_x > 0) {
+      currentChoice = choices[int(random(choices.length))];  // Change the current choice if gyro_y is positive
+      delay(100);  
+    }
+  } else if(currentChoice.equals("Left")) {
+    if (gyro_x < 0) {
+      currentChoice = choices[int(random(choices.length))];  // Change the current choice if gyro_y is positive
+      delay(100);  
+    }
+  } else if(currentChoice.equals("Upper Cut")) {
+    if (accel_z >= 17) {
+      currentChoice = choices[int(random(choices.length))];  // Change the current choice if gyro_y is positive
+      delay(100);  
+    }
+  } else if(currentChoice.equals("Jab")) {
+    if (gyro_y > 0) {
+      currentChoice = choices[int(random(choices.length))];  // Change the current choice if gyro_y is positive
+      delay(100);  
+    }
+  }
+}
 void cardio_draw() {
   PImage img;
   img = loadImage("img3.png");
@@ -28,7 +52,8 @@ void cardio_draw() {
   //textSize(32);  // Set the text size to 32
   textAlign(CENTER, CENTER);  // Set the text alignment to center
   fill(255, 0, 0);  // Set the text color to red
-  text(accel_x, width/2, height/2);  // Display the data in the center of the screen
+  updateChoice();
+  text(currentChoice, width/2, height/2);  // Display the data in the center of the screen
   
   
   stroke(255, 0, 0);  // Set the color of the graph to red
