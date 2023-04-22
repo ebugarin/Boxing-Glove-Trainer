@@ -1,7 +1,7 @@
 float[] HRdata = new float[50];  // Array to store heart rate data
 int graphWidth = 200;  // Width of the graph in pixels
 int graphHeight = 100;  // Height of the graph in pixels
-int circleSize = 20;
+int circleSize = 200;
 color circleColor = color(255, 0, 0); // initial color is red
 int circleX = 100;
 int circleY = 100;
@@ -15,7 +15,7 @@ void draw_FSR() {
   } else {
     circleColor = color(255, 0, 0); // initial color is red
   }
-  
+  text("Grip", width/2-400, height/2-300);  // Display the data in the center of the screen
   // Draw the circle
   fill(circleColor);
   ellipse(circleX, circleY, circleSize, circleSize);
@@ -75,7 +75,6 @@ void drawGraph() {
     float y2 = map(HRdata[i+1], 0, 200, height-50, height-50-graphHeight);
     line(x1, y1, x2, y2);
   }
-  // Draw axis labels
 
   // Draw axis labels
   textAlign(CENTER, TOP);

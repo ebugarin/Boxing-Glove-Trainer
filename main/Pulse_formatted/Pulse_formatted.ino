@@ -127,7 +127,7 @@ void setup(){
   // Data lags a bit behind the sensor, if you're finger is on the sensor when
   // it's being configured this delay will give some time for the data to catch
   // up. 
-  delay(4000); 
+  delay(100); 
 
 }
 
@@ -153,6 +153,33 @@ void loop(){
 
     Serial.print(a.acceleration.z); // [3] =  Z acceleration
     Serial.print(",");
+    // if(abs(a.acceleration.x) + abs(a.acceleration.y) >= 15) {
+
+    //   Serial.println("");
+
+    //   Serial.println("SIDEWAYS");
+    //       Serial.println("");
+
+
+
+          
+    // }
+
+    // if(a.acceleration.z < 8 && abs(a.acceleration.x) >= 20) {
+    //       Serial.println("");
+
+    //   Serial.println("STRAIGHT");
+    //       Serial.println("");
+
+    // }
+    
+    // if(a.acceleration.z  >= 17) {
+    //       Serial.println("");
+
+    //   Serial.println("UPPER");
+    //       Serial.println("");
+
+    // }
 
     Serial.print(g.gyro.x); // [4] = Gyro X
     Serial.print(",");
@@ -206,5 +233,5 @@ void loop(){
 
     Serial.println("");
     
-    delay(300); // Slowing it down, we don't need to break our necks here.
+    delay(150); // Slowing it down, we don't need to break our necks here.
 }
