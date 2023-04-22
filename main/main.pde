@@ -42,6 +42,8 @@ void draw() {
     force_draw();
   else if (tab == "cardio")
     cardio_draw();
+  else if (tab == "speed")
+    speed();
 
 }
 

@@ -16,6 +16,8 @@ void menu_draw() {
   textFont(font, 30);
   text("Press 'l' for Force Calculator", 110, 400);
   text("Press 'c' for Cardio Training", 110, 440);
+  text("Press 'p' for Speed Training", 110, 480);
+
 
   popStyle();
 }
